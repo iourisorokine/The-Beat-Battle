@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Music App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="app">
+    <header>
+      <h1>The Beats Machine</h1>
+      <p> <input type="range" id="tempo" name="tempo" min="50" max="250" value="120"
+          onchange="updateTempoValue(this.value)"><span id="tempo-disp"> Tempo:
+          120</span></p>
+      <p>
+        <button onclick="playMusic(partition1, timeoutTempo)" class="btn-play">
+          > Play
+        </button>
+        <button onclick="stopPlaying()" class="btn-play">
+          [] Stop
+        </button>
+      </p>
+    </header>
+    <div class="visual">
+      <div class="notes-def-col">
+        <div class="note-def">Kick</div>
+        <div class="note-def">Snare</div>
+        <div class="note-def">Hi-hat</div>
+        <div class="note-def">Tom</div>
+        <div class="note-def">Synth</div>
+        <div class="note-def">Clap</div>
+      </div>
+      <div class="notes-col">
+        <div class="note" id="note-0-0"></div>
+        <div class="note" id="note-0-1"></div>
+        <div class="note" id="note-0-2"></div>
+        <div class="note" id="note-0-3"></div>
+        <div class="note" id="note-0-4"></div>
+        <div class="note" id="note-0-5"></div>
+      </div>
+      <div class="notes-col">
+        <div class="note" id="note-1-0"></div>
+        <div class="note" id="note-1-1"></div>
+        <div class="note" id="note-1-2"></div>
+        <div class="note" id="note-1-3"></div>
+        <div class="note" id="note-1-4"></div>
+        <div class="note" id="note-1-5"></div>
+      </div>
+      <div class="notes-col">
+        <div class="note" id="note-2-0"></div>
+        <div class="note" id="note-2-1"></div>
+        <div class="note" id="note-2-2"></div>
+        <div class="note" id="note-2-3"></div>
+        <div class="note" id="note-2-4"></div>
+        <div class="note" id="note-2-5"></div>
+      </div>
+      <div class="notes-col">
+        <div class="note" id="note-3-0"></div>
+        <div class="note" id="note-3-1"></div>
+        <div class="note" id="note-3-2"></div>
+        <div class="note" id="note-3-3"></div>
+        <div class="note" id="note-3-4"></div>
+        <div class="note" id="note-3-5"></div>
+      </div>
+    </div>
+    <div class="pads">
+      <div class="pad1">
+        <audio class="sound" src="sounds/kit1/kick1.wav"></audio>
+      </div>
+      <div class="pad2">
+        <audio class="sound" src="sounds/kit1/snare1.wav"></audio>
+      </div>
+      <div class="pad3">
+        <audio class="sound" src="sounds/kit1/hi-hat1.wav"></audio>
+      </div>
+      <div class="pad4">
+        <audio class="sound" src="sounds/kit1/tom1.wav"></audio>
+      </div>
+      <div class="pad5">
+        <audio class="sound" src="sounds/kit1/poc.wav"></audio>
+      </div>
+      <div class="pad6">
+        <audio class="sound" src="sounds/kit1/clap1.wav"></audio>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="main.js"></script>
+
+</html>

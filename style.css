@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 50px 0 30px 0;
+    text-align: center;
+    font-size: 40px;
+}
+
+header p {
+    font-size: 20px;
+}
+
+.pads {
+    background-color: lightblue;
+    width: 100%;
+    display: flex;
+}
+
+.pads div {
+    height: 100px;
+    width: 100px;
+    flex: 1;
+}
+
+.pad1 {
+    background-color: papayawhip;
+}
+
+.pad2 {
+    background-color: peachpuff;
+}
+
+.pad3 {
+    background-color: lightcoral;
+}
+
+.pad4 {
+    background-color: lightgreen;
+}
+
+.pad5 {
+    background-color: limegreen;
+}
+
+.pad6 {
+    background-color: cyan;
+}
+
+.btn-play {
+    margin: 20px;
+    height: 50px;
+    width: 100px;
+    border: black solid 1px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.visual {
+    display: flex;
+}
+
+.notes-col {
+    margin: 20px 0;
+    padding: 0;
+}
+
+.notes-def-col {
+    margin: 20px 0;
+    padding-top: 10px;
+}
+
+.note-def {
+    margin: 5px;
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+}
+
+.note {
+    margin: 5px;
+    height: 50px;
+    width: 50px;
+    background-color: #ddd;
+}
+
+.notes-col-highlighted {
+    background-color: papayawhip;
+}
+
+.highlighted {
+    background-color: lightsalmon;
+    box-shadow: 0px 0px 1px 1px lightsalmon;
+}
+
+#tempo-disp {
+    margin: 0 10px;
+}
