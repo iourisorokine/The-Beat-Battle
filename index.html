@@ -13,27 +13,48 @@
 <body>
   <div class="app">
     <header>
-      <h1>The Beats Machine</h1>
-      <p> <input type="range" id="tempo" name="tempo" min="50" max="250" value="120"
+      <h1>Drop The Beat</h1>
+    </header>
+    <div class="general-section-user">
+      <p id="tempo-gauge"> <input type="range" id="tempo" name="tempo" min="50" max="250" value="120"
           onchange="updateTempoValue(this.value)"><span id="tempo-disp"> Tempo:
           120</span></p>
       <p>
-        <button onclick="playMusic(partition1, timeoutTempo)" class="btn-play">
+        <button onclick="playMusic(soundsPlayer,partitionUser, timeoutTempo)" class="btn-play">
           > Play
         </button>
         <button onclick="stopPlaying()" class="btn-play">
           [] Stop
         </button>
-      </p>
-    </header>
-    <div class="visual">
+        <button onclick="playDJ(soundsDJ,partitionDJ,timeoutTempoDJ)" class="btn-play">
+          <> Listen
+        </button>
+    </div>
+    <div class="general-section-auto" id="text-feedback-zone">
+      <p id="score-p">Score: 0</p>
+      <p id="feedback-zone1">Listen to the music</p>
+      <p id="feedback-zone2">Re-create the beat using the pattern</p>
+    </div>
+    <div class="general-section-user">
       <div class="notes-def-col">
-        <div class="note-def">Kick</div>
-        <div class="note-def">Snare</div>
-        <div class="note-def">Hi-hat</div>
-        <div class="note-def">Tom</div>
-        <div class="note-def">Synth</div>
-        <div class="note-def">Clap</div>
+        <div class="note-def">Kick
+          <audio class="sound" src="sounds/kit1/kick1.wav"></audio>
+        </div>
+        <div class="note-def">Snare
+          <audio class="sound" src="sounds/kit1/snare1.wav"></audio>
+        </div>
+        <div class="note-def">Hi-hat
+          <audio class="sound" src="sounds/kit1/hi-hat1.wav"></audio>
+        </div>
+        <div class="note-def">Tom
+          <audio class="sound" src="sounds/kit1/tom1.wav"></audio>
+        </div>
+        <div class="note-def">Synth
+          <audio class="sound" src="sounds/kit1/poc.wav"></audio>
+        </div>
+        <div class="note-def">Clap
+          <audio class="sound" src="sounds/kit1/clap1.wav"></audio>
+        </div>
       </div>
       <div class="notes-col">
         <div class="note" id="note-0-0"></div>
@@ -68,28 +89,12 @@
         <div class="note" id="note-3-5"></div>
       </div>
     </div>
-    <div class="pads">
-      <div class="pad1">
-        <audio class="sound" src="sounds/kit1/kick1.wav"></audio>
-      </div>
-      <div class="pad2">
-        <audio class="sound" src="sounds/kit1/snare1.wav"></audio>
-      </div>
-      <div class="pad3">
-        <audio class="sound" src="sounds/kit1/hi-hat1.wav"></audio>
-      </div>
-      <div class="pad4">
-        <audio class="sound" src="sounds/kit1/tom1.wav"></audio>
-      </div>
-      <div class="pad5">
-        <audio class="sound" src="sounds/kit1/poc.wav"></audio>
-      </div>
-      <div class="pad6">
-        <audio class="sound" src="sounds/kit1/clap1.wav"></audio>
-      </div>
+    <div class="general-section-auto" id="visual-feedback-zone">
+      <p>Here go some visual feedback</p>
     </div>
   </div>
 </body>
+<script src="partitions.js"></script>
 <script src="main.js"></script>
 
 </html>

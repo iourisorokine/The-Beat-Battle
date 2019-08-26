@@ -9,57 +9,68 @@ body {
 }
 
 .app {
-    height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
+}
+
+header {
+    width: 100%;
 }
 
 header h1 {
     margin: 50px 0 30px 0;
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
+    font-weight: bolder;
 }
 
 header p {
     font-size: 20px;
 }
 
-.pads {
-    background-color: lightblue;
+.general-section-user {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+    width: 60%;
+    padding: 10px;
+    border: solid black 1px;
+}
+
+.general-section-auto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    width: 30%;
+    padding: 10px;
+    border: solid black 1px;
+}
+
+#tempo-gauge {
     width: 100%;
     display: flex;
+    justify-content: center;
 }
 
-.pads div {
-    height: 100px;
-    width: 100px;
-    flex: 1;
+#text-feedback-zone {
+    min-height: 130px;
 }
 
-.pad1 {
-    background-color: papayawhip;
+#visual-feedback-zone {
+    min-height: 398px;
 }
 
-.pad2 {
-    background-color: peachpuff;
+#feedback-zone1 {
+    padding: 10px 0;
 }
 
-.pad3 {
-    background-color: lightcoral;
-}
-
-.pad4 {
-    background-color: lightgreen;
-}
-
-.pad5 {
-    background-color: limegreen;
-}
-
-.pad6 {
-    background-color: cyan;
+#score-p {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .btn-play {
@@ -67,12 +78,9 @@ header p {
     height: 50px;
     width: 100px;
     border: black solid 1px;
+    border-radius: 3px;
     font-size: 20px;
     text-transform: uppercase;
-}
-
-.visual {
-    display: flex;
 }
 
 .notes-col {
@@ -81,15 +89,29 @@ header p {
 }
 
 .notes-def-col {
-    margin: 20px 0;
+    margin-top: 10px;
     padding-top: 10px;
 }
 
 .note-def {
     margin: 5px;
+    padding-left: 10px;
     height: 50px;
     width: 100px;
+    display: flex;
+    align-items: center;
     font-size: 20px;
+    border-radius: 3px;
+}
+
+.note-def:hover,
+.btn-play:hover {
+    background-color: peachpuff;
+    border: solid #444 1px;
+}
+
+.note-def:active {
+    transform: scale(0.8);
 }
 
 .note {
@@ -97,10 +119,15 @@ header p {
     height: 50px;
     width: 50px;
     background-color: #ddd;
+    border-radius: 3px;
+}
+
+.note:hover {
+    border: solid #444 1px;
 }
 
 .notes-col-highlighted {
-    background-color: papayawhip;
+    background-color: rgb(255, 229, 187);
 }
 
 .highlighted {
