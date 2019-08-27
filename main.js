@@ -21,7 +21,11 @@ let feedbackZone1 = document.getElementById('feedback-zone1');
 let feedbackZone2 = document.getElementById('feedback-zone2');
 let userMusicControls = document.getElementById('user-music-controls');
 
-
+// starts the game by removing the welcome screen
+welcomeScreenOff = () => {
+  const welcomeScreen = document.getElementById('game-start-page');
+  welcomeScreen.style.display = 'none';
+}
 
 // load sounds for the pad
 window.addEventListener("load", () => {
@@ -75,8 +79,10 @@ playMusic = (soundsArr, partition, tempo) => {
 // plays the music and replaces by a stop button
 playUserMusic = () => {
   playMusic(soundsPlayer, partitionUser, timeoutTempo);
-  removeButton('#btn-play');
-  createStopButton();
+  if (document.contains(document.getElementById('btn-play'))) {
+    removeButton('#btn-play');
+    createStopButton();
+  }
 }
 
 
@@ -151,7 +157,7 @@ updateTempoValue = (val) => {
   tempo = val;
   timeoutTempo = 60000 / (tempo * 2);
   clearInterval(musicPlaying);
-  playMusic(soundsPlayer, partitionUser, timeoutTempo);
+  playUserMusic();
 }
 
 // stops the player music from playing, replaces by a play button
@@ -259,7 +265,7 @@ showScoreBoard = (roundSc, timeBo, playerSc, remainingTime) => {
   boardRoundScore.innerText = roundSc;
   boardTimeBonus.innerText = timeBo;
   boardTotalScore.innerText = playerSc;
-  scoreBoard.style.display = 'block';
+  scoreBoard.style.display = 'flex';
   setTimeout(() => {
     scoreBoard.style.display = 'none';
   }, 4000);
@@ -287,8 +293,8 @@ playRound = () => {
 // cleans the zone with feedback
 clearFeedbackZone = () => {
   styleFeedback(0);
-  feedbackZone1.innerHTML = "Listen to the beat!";
-  feedbackZone2.innerHTML = "Try to reproduce it!";
+  feedbackZone1.innerHTML = "Listen to the beat, and try to re-create it using the pad on the left side!";
+  feedbackZone2.innerHTML = "";
 }
 
 //resets the player input with all notes to false, resets pad style

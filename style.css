@@ -6,6 +6,7 @@
 
 body {
     font-family: helvetica, sans-serif;
+    background-image: url(images/bg-live-1.jpeg);
 }
 
 #score-board {
@@ -27,6 +28,27 @@ body {
     font-size: 18px;
 }
 
+#game-start-page {
+    position: fixed;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    top: 130px;
+    left: 20vw;
+    width: 800px;
+    height: 400px;
+    border: solid black 3px;
+    border-radius: 3px;
+    padding: 50px 100px;
+}
+
+.game-description {
+    padding: 30px 0;
+    font-size: 20px;
+    line-height: 30px;
+}
+
 #board-score-total {
     font-weight: bold;
 }
@@ -46,6 +68,7 @@ h1 {
     margin: 50px 0 30px 0;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
+    color: white;
     font-size: 50px;
     font-weight: 700;
 }
@@ -62,15 +85,26 @@ header p {
     font-size: 20px;
 }
 
-.general-section-user {
+.general-section-user,
+.general-section-auto {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
+    height: 480px;
     margin: 10px;
     width: 47%;
     padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
     border: solid black 1px;
+    border-radius: 3px;
+}
+
+.general-section-user {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.general-section-auto {
+    align-items: center;
 }
 
 #user-music-controls {
@@ -80,20 +114,13 @@ header p {
 }
 
 #tempo-gauge {
-    width: 400px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.general-section-auto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 480px;
-    margin: 10px;
-    width: 47%;
-    padding: 10px;
-    border: solid black 1px;
+#tempo-gauge * {
+    padding: 0 10px
 }
 
 .user-notes-pad {
@@ -119,6 +146,8 @@ header p {
 #feedback-zone2 {
     padding: 10px 0;
     font-size: 20px;
+    line-height: 30px;
+    text-align: center;
 }
 
 #score-span,
@@ -205,8 +234,4 @@ header p {
 .highlighted {
     background-color: lightsalmon;
     box-shadow: 0px 0px 1px 1px lightsalmon;
-}
-
-#tempo-disp {
-    margin: 0 10px;
 }

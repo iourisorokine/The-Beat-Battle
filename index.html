@@ -18,15 +18,28 @@
     <p>Time Bonus: <span id="board-time-bonus"></span></p>
     <p id="board-score-total">Total Score: <span id="board-total-score"></span></p>
   </div>
+  <div id="game-start-page">
+    <p class="game-description">
+      <strong>The Beat Battle</strong> is a game where you face the greatest DJs in an <strong> epic
+        beat-contest!</strong>
+    </p>
+    <p class="game-description">Listen to the beat, then create it and play it before the time is ellapsed.
+      The faster you are, the more you score! Are you ready?</p>
+    <button onclick="welcomeScreenOff()" class="btn-control">
+      Yes!
+    </button>
+  </div>
   <div class="app">
     <header>
-      <h1>Drop The Beat</h1>
+      <h1>The Beat Battle</h1>
     </header>
     <div class="general-section-user">
       <div id="user-music-controls">
-        <p id="tempo-gauge"> <input type="range" id="tempo" name="tempo" min="50" max="250" value="120"
-            onchange="updateTempoValue(this.value)"><span id="tempo-disp"> Tempo:
-            120</span></p>
+        <p id="tempo-gauge">
+          <span id="tempo-disp"> Tempo: 120</span>
+          <input type="range" id="tempo" name="tempo" min="50" max="250" value="120"
+            onchange="updateTempoValue(this.value)">
+        </p>
         <button onclick="playUserMusic()" class="btn-control" id="btn-play">
           > Play
         </button>
@@ -90,11 +103,11 @@
       <p><span id="round-span">Round</span></p>
       <p><span id="score-span">Score: 0 </span></p>
       <p id="time-or-button"><button onclick="playRound()" class="btn-control" id="btn-start-round">
-          Start Next Round
+          Start The Game
         </button>
       </p>
-      <p id="feedback-zone1">Listen to the beat!</p>
-      <p id="feedback-zone2">Try to reproduce it!</p>
+      <p id="feedback-zone1">Listen to the beat, and try to re-create it using the pad on the left side!</p>
+      <p id="feedback-zone2"></p>
     </div>
   </div>
 </body>
