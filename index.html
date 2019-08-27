@@ -6,91 +6,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Music App</title>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
 </head>
 
 <body>
+  <div id="score-board">
+    <h2 id="board-title">Round Passed!</h2>
+    <p>Round Score: <span id="board-round-score"></span></p>
+    <p>Time Bonus: <span id="board-time-bonus"></span></p>
+    <p id="board-score-total">Total Score: <span id="board-total-score"></span></p>
+  </div>
   <div class="app">
     <header>
       <h1>Drop The Beat</h1>
     </header>
     <div class="general-section-user">
-      <p id="tempo-gauge"> <input type="range" id="tempo" name="tempo" min="50" max="250" value="120"
-          onchange="updateTempoValue(this.value)"><span id="tempo-disp"> Tempo:
-          120</span></p>
-      <p>
-        <button onclick="playMusic(soundsPlayer,partitionUser, timeoutTempo)" class="btn-play">
+      <div id="user-music-controls">
+        <p id="tempo-gauge"> <input type="range" id="tempo" name="tempo" min="50" max="250" value="120"
+            onchange="updateTempoValue(this.value)"><span id="tempo-disp"> Tempo:
+            120</span></p>
+        <button onclick="playUserMusic()" class="btn-control" id="btn-play">
           > Play
         </button>
-        <button onclick="stopPlaying()" class="btn-play">
-          [] Stop
-        </button>
-        <button onclick="playDJ(soundsDJ,partitionDJ,timeoutTempoDJ)" class="btn-play">
-          <> Listen
-        </button>
+      </div>
+      <div class="user-notes-pad">
+        <div class="notes-def-col">
+          <div class="note-def">Kick
+            <audio class="sound" src="sounds/kit1/kick1.wav"></audio>
+          </div>
+          <div class="note-def">Snare
+            <audio class="sound" src="sounds/kit1/snare1.wav"></audio>
+          </div>
+          <div class="note-def">Hi-hat
+            <audio class="sound" src="sounds/kit1/hi-hat1.wav"></audio>
+          </div>
+          <div class="note-def">Tom
+            <audio class="sound" src="sounds/kit1/tom1.wav"></audio>
+          </div>
+          <div class="note-def">Synth
+            <audio class="sound" src="sounds/kit1/poc.wav"></audio>
+          </div>
+          <div class="note-def">Clap
+            <audio class="sound" src="sounds/kit1/clap1.wav"></audio>
+          </div>
+        </div>
+        <div class="notes-col">
+          <div class="note" id="note-0-0"></div>
+          <div class="note" id="note-0-1"></div>
+          <div class="note" id="note-0-2"></div>
+          <div class="note" id="note-0-3"></div>
+          <div class="note" id="note-0-4"></div>
+          <div class="note" id="note-0-5"></div>
+        </div>
+        <div class="notes-col">
+          <div class="note" id="note-1-0"></div>
+          <div class="note" id="note-1-1"></div>
+          <div class="note" id="note-1-2"></div>
+          <div class="note" id="note-1-3"></div>
+          <div class="note" id="note-1-4"></div>
+          <div class="note" id="note-1-5"></div>
+        </div>
+        <div class="notes-col">
+          <div class="note" id="note-2-0"></div>
+          <div class="note" id="note-2-1"></div>
+          <div class="note" id="note-2-2"></div>
+          <div class="note" id="note-2-3"></div>
+          <div class="note" id="note-2-4"></div>
+          <div class="note" id="note-2-5"></div>
+        </div>
+        <div class="notes-col">
+          <div class="note" id="note-3-0"></div>
+          <div class="note" id="note-3-1"></div>
+          <div class="note" id="note-3-2"></div>
+          <div class="note" id="note-3-3"></div>
+          <div class="note" id="note-3-4"></div>
+          <div class="note" id="note-3-5"></div>
+        </div>
+      </div>
     </div>
     <div class="general-section-auto" id="text-feedback-zone">
-      <p id="score-p">Score: 0</p>
-      <p id="feedback-zone1">Listen to the music</p>
-      <p id="feedback-zone2">Re-create the beat using the pattern</p>
-    </div>
-    <div class="general-section-user">
-      <div class="notes-def-col">
-        <div class="note-def">Kick
-          <audio class="sound" src="sounds/kit1/kick1.wav"></audio>
-        </div>
-        <div class="note-def">Snare
-          <audio class="sound" src="sounds/kit1/snare1.wav"></audio>
-        </div>
-        <div class="note-def">Hi-hat
-          <audio class="sound" src="sounds/kit1/hi-hat1.wav"></audio>
-        </div>
-        <div class="note-def">Tom
-          <audio class="sound" src="sounds/kit1/tom1.wav"></audio>
-        </div>
-        <div class="note-def">Synth
-          <audio class="sound" src="sounds/kit1/poc.wav"></audio>
-        </div>
-        <div class="note-def">Clap
-          <audio class="sound" src="sounds/kit1/clap1.wav"></audio>
-        </div>
-      </div>
-      <div class="notes-col">
-        <div class="note" id="note-0-0"></div>
-        <div class="note" id="note-0-1"></div>
-        <div class="note" id="note-0-2"></div>
-        <div class="note" id="note-0-3"></div>
-        <div class="note" id="note-0-4"></div>
-        <div class="note" id="note-0-5"></div>
-      </div>
-      <div class="notes-col">
-        <div class="note" id="note-1-0"></div>
-        <div class="note" id="note-1-1"></div>
-        <div class="note" id="note-1-2"></div>
-        <div class="note" id="note-1-3"></div>
-        <div class="note" id="note-1-4"></div>
-        <div class="note" id="note-1-5"></div>
-      </div>
-      <div class="notes-col">
-        <div class="note" id="note-2-0"></div>
-        <div class="note" id="note-2-1"></div>
-        <div class="note" id="note-2-2"></div>
-        <div class="note" id="note-2-3"></div>
-        <div class="note" id="note-2-4"></div>
-        <div class="note" id="note-2-5"></div>
-      </div>
-      <div class="notes-col">
-        <div class="note" id="note-3-0"></div>
-        <div class="note" id="note-3-1"></div>
-        <div class="note" id="note-3-2"></div>
-        <div class="note" id="note-3-3"></div>
-        <div class="note" id="note-3-4"></div>
-        <div class="note" id="note-3-5"></div>
-      </div>
-    </div>
-    <div class="general-section-auto" id="visual-feedback-zone">
-      <p>Here go some visual feedback</p>
+      <p><span id="round-span">Round</span></p>
+      <p><span id="score-span">Score: 0 </span></p>
+      <p id="time-or-button"><button onclick="playRound()" class="btn-control" id="btn-start-round">
+          Start Next Round
+        </button>
+      </p>
+      <p id="feedback-zone1">Listen to the beat!</p>
+      <p id="feedback-zone2">Try to reproduce it!</p>
     </div>
   </div>
 </body>

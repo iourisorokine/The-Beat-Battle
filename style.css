@@ -5,7 +5,30 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: helvetica, sans-serif;
+}
+
+#score-board {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    top: 30vh;
+    left: 30vw;
+    width: 350px;
+    height: 200px;
+    background-color: white;
+    border: solid black 1px;
+    padding: 10px 30px;
+}
+
+#score-board p {
+    line-height: 30px;
+    font-size: 18px;
+}
+
+#board-score-total {
+    font-weight: bold;
 }
 
 .app {
@@ -19,11 +42,20 @@ header {
     width: 100%;
 }
 
-header h1 {
+h1 {
     margin: 50px 0 30px 0;
     text-align: center;
+    font-family: 'Orbitron', sans-serif;
     font-size: 50px;
-    font-weight: bolder;
+    font-weight: 700;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    padding: 15px 0;
 }
 
 header p {
@@ -32,55 +64,95 @@ header p {
 
 .general-section-user {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     margin: 10px;
-    width: 60%;
+    width: 47%;
     padding: 10px;
     border: solid black 1px;
+}
+
+#user-music-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#tempo-gauge {
+    width: 400px;
+    display: flex;
+    justify-content: center;
 }
 
 .general-section-auto {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 480px;
     margin: 10px;
-    width: 30%;
+    width: 47%;
     padding: 10px;
     border: solid black 1px;
 }
 
-#tempo-gauge {
-    width: 100%;
+.user-notes-pad {
     display: flex;
     justify-content: center;
 }
 
 #text-feedback-zone {
     min-height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+#text-feedback-zone * {
+    flex: 1;
 }
 
 #visual-feedback-zone {
     min-height: 398px;
 }
 
-#feedback-zone1 {
+#feedback-zone1,
+#feedback-zone2 {
     padding: 10px 0;
-}
-
-#score-p {
     font-size: 20px;
-    font-weight: bold;
 }
 
-.btn-play {
-    margin: 20px;
+#score-span,
+#round-span {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+}
+
+#time-span {
+    font-size: 25px;
+    font-weight: bold;
+    color: blue;
+}
+
+.btn-control {
+    margin: 10px;
     height: 50px;
-    width: 100px;
+    width: 120px;
     border: black solid 1px;
     border-radius: 3px;
     font-size: 20px;
     text-transform: uppercase;
+}
+
+#btn-start-round {
+    width: 220px;
+    color: white;
+    background-color: green;
+}
+
+#btn-start-round:hover {
+    background-color: limegreen;
 }
 
 .notes-col {
@@ -105,7 +177,7 @@ header p {
 }
 
 .note-def:hover,
-.btn-play:hover {
+.btn-control:hover {
     background-color: peachpuff;
     border: solid #444 1px;
 }
