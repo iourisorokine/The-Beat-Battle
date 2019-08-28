@@ -10,6 +10,8 @@ body {
     background-size: cover;
 }
 
+
+
 #score-board {
     display: none;
     flex-direction: column;
@@ -25,6 +27,7 @@ body {
     padding: 10px 30px;
     animation-name: boxAppears;
     animation-duration: 1s;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 #score-board p {
@@ -48,6 +51,7 @@ body {
     background-color: white;
     border-radius: 20px;
     padding: 50px 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 .game-description {
@@ -114,6 +118,7 @@ header p {
     background-color: rgba(255, 255, 255, 0.6);
     border: solid black 1px;
     border-radius: 3px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 .general-section-user {
@@ -183,10 +188,12 @@ header p {
     border-radius: 3px;
     font-size: 20px;
     text-transform: uppercase;
+    box-shadow: 1px 1px 3px #444;
 }
 
 #listen-button {
     width: 200px;
+    box-shadow: 1px 1px 3px #444;
 }
 
 #btn-start-round {
@@ -195,6 +202,7 @@ header p {
     background-color: green;
     transition: ease-in;
     transition-duration: 1s;
+    box-shadow: 1px 1px 3px #444;
 }
 
 #btn-start-round:hover {
@@ -232,7 +240,7 @@ header p {
 .note-def:hover,
 .btn-control:hover {
     background-color: peachpuff;
-    border: solid #444 1px;
+    box-shadow: 1px 1px 3px #444;
 }
 
 .note-def:active {
@@ -245,19 +253,26 @@ header p {
     width: 50px;
     background-color: white;
     border-radius: 3px;
+    box-shadow: 1px 1px 3px #444;
 }
 
 .note:hover {
-    border: solid #444 1px;
+    border: solid 1px #555;
 }
 
 .notes-col-highlighted {
-    background-color: rgb(255, 229, 187);
+    background-color: lightsalmon;
+    box-shadow: 2px 2px 5px peachpuff;
+    /* transition: ease-in-out;
+    transition-duration: 0.2s; */
 }
 
 .highlighted {
     background-color: lightsalmon;
     box-shadow: 0px 0px 1px 1px lightsalmon;
+    transform: scale(0.8);
+    transition: ease;
+    transition-duration: 0.3s;
 }
 
 .opponent-character {
@@ -273,6 +288,7 @@ header p {
     border: solid 3px black;
     background-color: white;
     border-radius: 20px;
+    box-shadow: 1px 1px 3px #444;
 }
 
 .opponent-character img {

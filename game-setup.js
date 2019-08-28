@@ -7,10 +7,11 @@ const notes = Array.from(document.querySelectorAll(".note"));
 const notesCols = Array.from(document.querySelectorAll(".notes-col"));
 let musicPlaying;
 let playerScore = 0;
-let tempo = 120;
-let timeoutTempo = 60000 / (tempo * 2);
 let roundNb = 0;
 let roundIsStarted = false;
+let userMusicIsPlaying = false;
+let tempo = partitionsToPickFrom[roundNb].tempo; // user tempo removed
+let timeoutTempo = 60000 / (tempo * 2);
 
 
 // loading the settings for the current round
@@ -48,7 +49,8 @@ window.addEventListener("load", () => {
             const rowsToggle = note.id.split("-")[1];
             const colsToggle = note.id.split("-")[2];
             partitionUser[rowsToggle][colsToggle] = !partitionUser[rowsToggle][colsToggle];
-            soundsPlayer[colsToggle].play();
+            if (userMusicIsPlaying === false) playUserMusic();
+
         });
     });
 });
@@ -65,7 +67,7 @@ createColumn = () => {
 writeTutorial = () => {
 
     let i = 0;
-    const tutorialText1 = 'To warm-up, play around with the pad on the left side: - Click on the squares to add notes. - Click on "Play" to play the music. - Change the tempo with the selector.';
+    const tutorialText1 = 'To warm-up, play around with the pad on the left side: - Click on the squares to add notes. - Click on "Play" / "Stop" to play or stop the music.';
     const tutorialText2 = 'When you are ready, press "Start The Round"';
     const speed = 70;
     let feedbackZone = document.getElementById('feedback-zone');

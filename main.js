@@ -24,6 +24,7 @@ playMusic = (soundsArr, partition, tempo) => {
 
 // plays the music and replaces by a stop button
 playUserMusic = () => {
+  userMusicIsPlaying = true;
   playMusic(soundsPlayer, partitionUser, timeoutTempo);
   if (document.contains(document.getElementById('btn-play'))) {
     removeButton('#btn-play');
@@ -102,6 +103,7 @@ highlightCol = (index) => {
 }
 
 // updates the tempo when the user changes the value
+/*
 updateTempoValue = (val) => {
   document.getElementById("tempo-disp").innerText = "Tempo: " + val;
   tempo = val;
@@ -109,10 +111,11 @@ updateTempoValue = (val) => {
   clearInterval(musicPlaying);
   playUserMusic();
 }
-
+*/
 // stops the player music from playing, replaces by a play button
 stopPlaying = () => {
   clearInterval(musicPlaying);
+  userMusicIsPlaying = false;
   if (document.contains(document.getElementById('btn-stop'))) {
     removeButton('#btn-stop');
     createPlayButton();
@@ -137,15 +140,17 @@ compareMusic = (modelPartition, userPartition) => {
   return score;
 }
 
+/*
 compareTempo = (modelTempo, userTempo) => {
   const difference = Math.abs(userTempo - modelTempo) / modelTempo;
   return difference * 10;
 }
+*/
 
 giveScore = (modelPartition, userPartition, modelTempo, userTempo) => {
-  const tempoDiff = compareTempo(modelTempo, userTempo);
+  //  const tempoDiff = compareTempo(modelTempo, userTempo);
   const musicScore = compareMusic(modelPartition, userPartition);
-  const currentScore = (musicScore - tempoDiff).toFixed(0);
+  const currentScore = Math.round(musicScore);
   return Math.max(currentScore, 0);
 }
 
@@ -155,9 +160,9 @@ giveScore = (modelPartition, userPartition, modelTempo, userTempo) => {
 giveFeedbackToPlayer = () => {
   currentScore = giveScore(partitionDJ, partitionUser, timeoutTempoDJ, timeoutTempo);
   const comment = generateComment(currentScore);
-  const tempoComment = getTempoComment();
+  // const tempoComment = getTempoComment(); - tempo comments removed
   styleFeedback(currentScore);
-  feedbackZone.innerHTML = `${currentScore}% correct <br> ${comment} <br> ${tempoComment}`;
+  feedbackZone.innerHTML = `${currentScore}% correct <br> ${comment}`;
   return currentScore;
 }
 
@@ -197,13 +202,15 @@ generateComment = (score) => {
   return comment;
 }
 
-getTempoComment = () => {
+// helps the user to find the right tempo, function desactivated because tempo is out
+/*getTempoComment = () => {
   let tempoComment = "";
   if (timeoutTempoDJ < timeoutTempo) tempoComment = "Play faster!";
   else if (timeoutTempoDJ > timeoutTempo) tempoComment = "Play slower!";
   else tempoComment = "tempo ok";
   return tempoComment;
 }
+*/
 
 // adds the score of the round to the total score of the player
 updatePlayerScore = (score, difficulty, remainingTime) => {
@@ -306,6 +313,8 @@ moveToNextRound = () => {
   timeoutTempoDJ = 60000 / (partitionsToPickFrom[roundNb].tempo * 2);
   partitionDJ = partitionsToPickFrom[roundNb].notes;
   roundDifficulty = partitionsToPickFrom[roundNb].difficulty;
+  tempo = partitionsToPickFrom[roundNb].tempo;
+  timeoutTempo = 60000 / (tempo * 2);
   updateRoundInfo(roundNb);
 }
 
