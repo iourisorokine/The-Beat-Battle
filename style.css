@@ -193,6 +193,8 @@ header p {
     width: 220px;
     color: white;
     background-color: green;
+    transition: ease-in;
+    transition-duration: 1s;
 }
 
 #btn-start-round:hover {
@@ -267,6 +269,7 @@ header p {
     padding: 10px;
     display: flex;
     align-items: center;
+    /* font-family: 'Permanent Marker', sans-serif; */
     border: solid 3px black;
     background-color: white;
     border-radius: 20px;

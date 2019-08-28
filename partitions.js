@@ -15,20 +15,22 @@ const partitionsToPickFrom = [{
         name: '"Just The Kick"',
         tempo: 120,
         difficulty: 1,
+        time: 30,
         notes: [
             [true, false, false, false, false, false],
-            [true, false, false, false, false, false],
             [false, false, false, false, false, false],
+            [true, false, false, false, false, false],
             [false, false, false, false, false, false]
         ]
     },
     {
-        name: '"Many Sounds"',
+        name: '"More Sounds"',
         tempo: 120,
         difficulty: 2,
+        time: 30,
         notes: [
-            [true, false, false, false, false, true],
-            [false, true, false, false, false, false],
+            [true, false, false, false, false, false],
+            [false, false, false, false, false, false],
             [false, false, false, true, false, false],
             [false, false, false, false, true, false]
         ]
@@ -37,6 +39,7 @@ const partitionsToPickFrom = [{
         name: '"Getting Started"',
         tempo: 120,
         difficulty: 2,
+        time: 50,
         notes: [
             [true, false, false, false, false, false],
             [false, false, true, false, false, false],
@@ -47,17 +50,19 @@ const partitionsToPickFrom = [{
     {
         name: '"Rock You!"',
         tempo: 60,
+        time: 50,
         difficulty: 4,
         notes: [
             [true, false, false, false, false, false],
             [true, false, false, false, false, false],
-            [false, false, false, false, false, true],
+            [false, true, false, false, false, true],
             [false, false, false, false, false, false]
         ]
     },
     {
         name: '"Funky"',
         tempo: 150,
+        time: 60,
         difficulty: 4,
         notes: [
             [true, false, true, false, false, false],
@@ -69,6 +74,7 @@ const partitionsToPickFrom = [{
     {
         name: '"Here We Go"',
         tempo: 130,
+        time: 90,
         difficulty: 5,
         notes: [
             [true, false, true, false, true, true],
@@ -80,7 +86,8 @@ const partitionsToPickFrom = [{
     {
         name: '"Hardcore Beat"',
         tempo: 220,
-        difficulty: 4.5,
+        time: 90,
+        difficulty: 7,
         notes: [
             [true, false, false, false, true, false],
             [true, false, false, false, true, false],

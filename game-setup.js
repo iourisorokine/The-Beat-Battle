@@ -25,6 +25,7 @@ let userMusicControls = document.getElementById('user-music-controls');
 welcomeScreenOff = () => {
     const welcomeScreen = document.getElementById('game-start-page');
     welcomeScreen.style.display = 'none';
+    writeTutorial();
 }
 
 // load sounds for the pad
@@ -57,3 +58,74 @@ window.addEventListener("load", () => {
 createColumn = () => {
 
 }
+
+// 
+
+
+writeTutorial = () => {
+
+    let i = 0;
+    const tutorialText1 = 'To warm-up, play around with the pad on the left side: - Click on the squares to add notes. - Click on "Play" to play the music. - Change the tempo with the selector.';
+    const tutorialText2 = 'When you are ready, press "Start The Round"';
+    const speed = 70;
+    let feedbackZone = document.getElementById('feedback-zone');
+
+    writeTutorialText1 = () => {
+        if (i < tutorialText1.length) {
+            feedbackZone.innerHTML += tutorialText1.charAt(i);
+            i++;
+            setTimeout(writeTutorialText1, speed);
+        }
+    }
+
+    writeTutorialText2 = () => {
+        if (i < tutorialText2.length) {
+            feedbackZone.innerHTML += tutorialText2.charAt(i);
+            i++;
+            setTimeout(writeTutorialText2, speed);
+        }
+    }
+    writeTutorialText1();
+    setTimeout(() => {
+        feedbackZone.innerHTML = "";
+        i = 0;
+        writeTutorialText2();
+        document.getElementById('start-or-listen-button').appendChild(createStartButton());
+    }, 20000);
+
+}
+
+
+/*
+writeTutorial = () => {
+
+    let i = 0;
+    const tutorialText1 = 'To warm-up, play around with the pad on the left side: - Click on the squares to add notes. - Click on "Play" to play the music. - Change the tempo with the selector.';
+    const tutorialText2 = 'When you are ready, press "Start The Battle"';
+    const speed = 70;
+    let feedbackZone = document.getElementById('feedback-zone');
+
+    writeTutorialText1 = () => {
+        if (i < tutorialText1.length) {
+            feedbackZone.innerHTML += tutorialText1.charAt(i);
+            i++;
+            setTimeout(writeTutorialText1, speed);
+        }
+    }
+
+    writeTutorialText2 = () => {
+        if (i < tutorialText2.length) {
+            feedbackZone.innerHTML += tutorialText2.charAt(i);
+            i++;
+            setTimeout(writeTutorialText2, speed);
+        }
+    }
+    writeTutorialText1();
+    setTimeout(() => {
+        feedbackZone.innerHTML = "";
+        i = 0;
+        writeTutorialText2();
+        document.getElementById('start-or-listen-button').appendChild(createStartButton());
+    }, 20000);
+
+}*/

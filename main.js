@@ -66,30 +66,32 @@ createListenButton = () => {
   startOrListenButton.appendChild(listenButton);
   listenButton.setAttribute('id', 'listen-button');
   listenButton.setAttribute('class', 'btn-control');
-  listenButton.setAttribute('onclick', 'listenToTheDJ()');
+  listenButton.setAttribute('onclick', 'listenToTheDJ(8)');
   listenButton.innerText = '<> Listen Again';
 }
 
 // Listen to the example
-listenToTheDJ = () => {
+listenToTheDJ = (measures) => {
   let listenButton = document.getElementById('listen-button');
   document.getElementById('start-or-listen-button').removeChild(listenButton)
-  playDJ(soundsDJ, partitionDJ, timeoutTempoDJ);
+  playDJ(soundsDJ, partitionDJ, timeoutTempoDJ, measures);
   setTimeout(function () {
     if (!document.contains(document.getElementById('btn-start-round'))) createListenButton();
-  }, timeoutTempoDJ * 16);
+  }, timeoutTempoDJ * measures);
 }
 
 // computer plays a beat and player has to reproduce, loop stops after 2 times
-playDJ = (soundsArr, partition, tempo) => {
+playDJ = (soundsArr, partition, tempo, measures) => {
   let counter = 0;
   let countTimes = 0;
   djPlaying = setInterval(function () {
+
+
     playBeat(soundsArr, partition[counter]);
     counter++;
     countTimes++;
     if (counter === partition.length) counter = 0;
-    if (countTimes === 16) clearInterval(djPlaying);
+    if (countTimes === measures) clearInterval(djPlaying);
   }, tempo);
 }
 
@@ -153,8 +155,9 @@ giveScore = (modelPartition, userPartition, modelTempo, userTempo) => {
 giveFeedbackToPlayer = () => {
   currentScore = giveScore(partitionDJ, partitionUser, timeoutTempoDJ, timeoutTempo);
   const comment = generateComment(currentScore);
+  const tempoComment = getTempoComment();
   styleFeedback(currentScore);
-  feedbackZone.innerHTML = `${currentScore}% correct <br> ${comment}`;
+  feedbackZone.innerHTML = `${currentScore}% correct <br> ${comment} <br> ${tempoComment}`;
   return currentScore;
 }
 
@@ -194,6 +197,14 @@ generateComment = (score) => {
   return comment;
 }
 
+getTempoComment = () => {
+  let tempoComment = "";
+  if (timeoutTempoDJ < timeoutTempo) tempoComment = "Play faster!";
+  else if (timeoutTempoDJ > timeoutTempo) tempoComment = "Play slower!";
+  else tempoComment = "tempo ok";
+  return tempoComment;
+}
+
 // adds the score of the round to the total score of the player
 updatePlayerScore = (score, difficulty, remainingTime) => {
   const roundScore = (score * difficulty);
@@ -224,10 +235,11 @@ showScoreBoard = (roundSc, timeBo, playerSc, remainingTime) => {
 playRound = () => {
   clearInterval(musicPlaying);
   moveToNextRound();
+  clearFeedbackZone();
   roundIsStarted = true;
-  let counter = 30;
+  let counter = partitionsToPickFrom[roundNb].time;
   let timeSpan = removeStartButton();
-  listenToTheDJ();
+  listenToTheDJ(16);
   let roundPlaying = setInterval(function () {
     timeSpan.innerText = `Time: ${counter} sec`;
     counter--;
@@ -302,8 +314,6 @@ endCurrentRound = (remainingTime) => {
   updatePlayerScore(giveFeedbackToPlayer(), roundDifficulty, remainingTime);
   replaceListenWithStart();
   stopPlaying();
-  clearFeedbackZone();
-  // removeButton('#listen-button');
   if (remainingTime > 0) soundsAmbiance[0].play();
   else soundsAmbiance[1].play();
   partitionUser = clearPartition();
