@@ -63,7 +63,6 @@ removeButton = (query) => {
 // creates the listen button
 createListenButton = () => {
   let listenButton = document.createElement('button');
-  let startOrListenButton = document.getElementById('start-or-listen-button');
   startOrListenButton.appendChild(listenButton);
   listenButton.setAttribute('id', 'listen-button');
   listenButton.setAttribute('class', 'btn-control');
@@ -74,19 +73,19 @@ createListenButton = () => {
 // Listen to the example
 listenToTheDJ = (measures) => {
   let listenButton = document.getElementById('listen-button');
-  document.getElementById('start-or-listen-button').removeChild(listenButton)
-  playDJ(soundsDJ, partitionDJ, timeoutTempoDJ, measures);
+  startOrListenButton.removeChild(listenButton)
+  playDJ(soundsDJ, partitionDJ, timeoutTempo, measures);
   setTimeout(function () {
     if (!document.contains(document.getElementById('btn-start-round'))) createListenButton();
-  }, timeoutTempoDJ * measures);
+  }, timeoutTempo * measures);
 }
 
 // computer plays a beat and player has to reproduce, loop stops after 2 times
 playDJ = (soundsArr, partition, tempo, measures) => {
   let counter = 0;
   let countTimes = 0;
+  stopPlaying();
   djPlaying = setInterval(function () {
-
 
     playBeat(soundsArr, partition[counter]);
     counter++;
@@ -102,16 +101,6 @@ highlightCol = (index) => {
   notesCols[index].classList.add("notes-col-highlighted");
 }
 
-// updates the tempo when the user changes the value
-/*
-updateTempoValue = (val) => {
-  document.getElementById("tempo-disp").innerText = "Tempo: " + val;
-  tempo = val;
-  timeoutTempo = 60000 / (tempo * 2);
-  clearInterval(musicPlaying);
-  playUserMusic();
-}
-*/
 // stops the player music from playing, replaces by a play button
 stopPlaying = () => {
   clearInterval(musicPlaying);
@@ -140,15 +129,7 @@ compareMusic = (modelPartition, userPartition) => {
   return score;
 }
 
-/*
-compareTempo = (modelTempo, userTempo) => {
-  const difference = Math.abs(userTempo - modelTempo) / modelTempo;
-  return difference * 10;
-}
-*/
-
-giveScore = (modelPartition, userPartition, modelTempo, userTempo) => {
-  //  const tempoDiff = compareTempo(modelTempo, userTempo);
+giveScore = (modelPartition, userPartition) => {
   const musicScore = compareMusic(modelPartition, userPartition);
   const currentScore = Math.round(musicScore);
   return Math.max(currentScore, 0);
@@ -158,9 +139,8 @@ giveScore = (modelPartition, userPartition, modelTempo, userTempo) => {
 //score in the feedback area
 
 giveFeedbackToPlayer = () => {
-  currentScore = giveScore(partitionDJ, partitionUser, timeoutTempoDJ, timeoutTempo);
+  currentScore = giveScore(partitionDJ, partitionUser);
   const comment = generateComment(currentScore);
-  // const tempoComment = getTempoComment(); - tempo comments removed
   styleFeedback(currentScore);
   feedbackZone.innerHTML = `${currentScore}% correct <br> ${comment}`;
   return currentScore;
@@ -187,7 +167,7 @@ styleFeedback = (score) => {
 generateComment = (score) => {
   let comment = "";
   if (score < 25) {
-    comment = "Nothing's going on";
+    comment = "Not quite there";
   } else if (score < 50) {
     comment = "Keep trying, padawan";
   } else if (score < 70) {
@@ -197,20 +177,10 @@ generateComment = (score) => {
   } else if (score < 100) {
     comment = "Almost there!";
   } else {
-    comment = "Bravo! That's perfect!";
+    comment = "Perfect! Bravo!";
   }
   return comment;
 }
-
-// helps the user to find the right tempo, function desactivated because tempo is out
-/*getTempoComment = () => {
-  let tempoComment = "";
-  if (timeoutTempoDJ < timeoutTempo) tempoComment = "Play faster!";
-  else if (timeoutTempoDJ > timeoutTempo) tempoComment = "Play slower!";
-  else tempoComment = "tempo ok";
-  return tempoComment;
-}
-*/
 
 // adds the score of the round to the total score of the player
 updatePlayerScore = (score, difficulty, remainingTime) => {
@@ -279,7 +249,6 @@ clearPartition = () => {
 // removes the start button
 removeStartButton = () => {
   let startButton = document.getElementById('btn-start-round');
-  let startOrListenButton = document.getElementById('start-or-listen-button');
   let timeSpan = document.getElementById('time-span');
   startOrListenButton.removeChild(startButton);
   createListenButton();
@@ -301,16 +270,15 @@ replaceListenWithStart = () => {
   const startButton = createStartButton();
   if (document.contains(document.getElementById('listen-button'))) {
     let listenButton = document.getElementById('listen-button');
-    document.getElementById('start-or-listen-button').removeChild(listenButton);
+    startOrListenButton.removeChild(listenButton);
   }
-  document.getElementById('start-or-listen-button').appendChild(startButton);
+  startOrListenButton.appendChild(startButton);
 }
 
 
 // sets up the game for the next round
 moveToNextRound = () => {
   currentScore = 0;
-  timeoutTempoDJ = 60000 / (partitionsToPickFrom[roundNb].tempo * 2);
   partitionDJ = partitionsToPickFrom[roundNb].notes;
   roundDifficulty = partitionsToPickFrom[roundNb].difficulty;
   tempo = partitionsToPickFrom[roundNb].tempo;
@@ -323,12 +291,17 @@ endCurrentRound = (remainingTime) => {
   updatePlayerScore(giveFeedbackToPlayer(), roundDifficulty, remainingTime);
   replaceListenWithStart();
   stopPlaying();
+  resetTime();
   if (remainingTime > 0) soundsAmbiance[0].play();
   else soundsAmbiance[1].play();
   partitionUser = clearPartition();
   roundIsStarted = false;
   roundNb++;
-  roundNb = roundNb % partitionsToPickFrom.length;
+  if (roundNb === partitionsToPickFrom.length) endTheGame();
+}
+
+resetTime = () => {
+  document.getElementById('time-span').innerText = 'Time: -- sec'
 }
 
 updateRoundInfo = (roundNb) => {

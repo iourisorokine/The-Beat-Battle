@@ -11,11 +11,11 @@ let partitionUser = [
 
 
 // partitions to be played by the computer - hardcoded
-const partitionsToPickFrom = [{
+const easyPartitions = [{
         name: '"Just The Kick"',
         tempo: 120,
         difficulty: 1,
-        time: 30,
+        time: 45,
         notes: [
             [true, false, false, false, false, false],
             [false, false, false, false, false, false],
@@ -24,27 +24,15 @@ const partitionsToPickFrom = [{
         ]
     },
     {
-        name: '"More Sounds"',
+        name: '"Drop The Bass"',
         tempo: 120,
         difficulty: 2,
-        time: 30,
+        time: 45,
         notes: [
-            [true, false, false, false, false, false],
-            [false, false, false, false, false, false],
+            [false, false, false, false, false, true],
+            [false, false, false, false, false, true],
             [false, false, false, true, false, false],
-            [false, false, false, false, true, false]
-        ]
-    },
-    {
-        name: '"Getting Started"',
-        tempo: 120,
-        difficulty: 2,
-        time: 50,
-        notes: [
-            [true, false, false, false, false, false],
-            [false, false, true, false, false, false],
-            [true, false, false, false, false, false],
-            [false, false, true, false, false, true]
+            [false, true, false, false, false, false]
         ]
     },
     {
@@ -55,7 +43,7 @@ const partitionsToPickFrom = [{
         notes: [
             [true, false, false, false, false, false],
             [true, false, false, false, false, false],
-            [false, true, false, false, false, true],
+            [false, true, false, false, true, false],
             [false, false, false, false, false, false]
         ]
     },
@@ -65,9 +53,25 @@ const partitionsToPickFrom = [{
         time: 60,
         difficulty: 4,
         notes: [
-            [true, false, true, false, false, false],
+            [true, false, true, false, false, true],
             [false, false, true, false, false, false],
-            [true, false, true, false, false, false],
+            [true, false, true, false, true, false],
+            [false, false, true, false, true, true]
+        ]
+    }
+
+]
+
+
+const hardPartitions = [{
+        name: '"Getting Started"',
+        tempo: 120,
+        difficulty: 2,
+        time: 60,
+        notes: [
+            [true, false, false, false, false, false],
+            [false, false, true, false, false, false],
+            [true, false, false, false, false, true],
             [false, false, true, false, false, true]
         ]
     },
@@ -94,17 +98,16 @@ const partitionsToPickFrom = [{
             [true, false, true, false, false, false],
             [true, false, false, true, true, false]
         ]
+    },
+    {
+        name: '"Random Stuff"',
+        tempo: 92,
+        difficulty: 7,
+        notes: [
+            [true, false, true, false, true, false],
+            [false, true, false, true, false, true],
+            [false, false, true, false, false, true],
+            [false, true, true, false, false, false]
+        ]
     }
 ]
-
-const extraPartitions = [{
-    name: '"Random Stuff"',
-    tempo: 92,
-    difficulty: 3.5,
-    notes: [
-        [true, false, true, false, true, false],
-        [false, true, false, true, false, true],
-        [false, false, true, false, false, true],
-        [false, true, true, false, false, false]
-    ]
-}]
