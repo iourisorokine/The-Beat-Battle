@@ -78,73 +78,29 @@ window.addEventListener("load", () => {
     });
 });
 
-
-// Instructions appear in the bubble 
-
-let tuto1i = 0;
-let tuto2i = 0;
-writeTutorialText1 = () => {
-    let feedbackZone = document.getElementById('feedback-zone');
-    const tutorialText = 'To warm-up, play around with the pad on the left side: - Click on the squares to add notes. - Click on "Play" / "Stop" to play or stop the music.';
-    if (tuto1i < tutorialText.length) {
-        feedbackZone.innerHTML += tutorialText.charAt(tuto1i);
-        tuto1i++;
-        setTimeout(writeTutorialText1, 70);
-    }
-}
-
-writeTutorialText2 = () => {
-    let feedbackZone = document.getElementById('feedback-zone');
-    const tutorialText = 'When you are ready, press "Start The Round"';
-    if (tuto2i < tutorialText.length) {
-        feedbackZone.innerHTML += tutorialText.charAt(tuto2i);
-        tuto2i++;
-        setTimeout(writeTutorialText2, 70);
-    }
-}
-
-writeTutorial = () => {
-
-    writeTutorialText1();
-    setTimeout(() => {
-        feedbackZone.innerHTML = "";
-        writeTutorialText2();
-        startOrListenButton.appendChild(createStartButton());
-    }, 20000);
-
-}
-
-
-/*
 writeTutorial = () => {
 
     let i = 0;
-    const tutorialText1 = 'To warm-up, play around with the pad on the left side: - Click on the squares to add notes. - Click on "Play" to play the music. - Change the tempo with the selector.';
-    const tutorialText2 = 'When you are ready, press "Start The Battle"';
+    const tutorialTexts = ['To warm-up, play around with the pad on the left side: - Click on the squares to add notes. Click on "Play" to play the music. Change the tempo with the selector.', 'When you are ready, press "Start The Round"'];
     const speed = 70;
     let feedbackZone = document.getElementById('feedback-zone');
+    let text = tutorialTexts[0];
 
-    writeTutorialText1 = () => {
-        if (i < tutorialText1.length) {
-            feedbackZone.innerHTML += tutorialText1.charAt(i);
+    writeTutorialText = () => {
+        if (i < text.length) {
+            feedbackZone.innerHTML += text.charAt(i);
             i++;
-            setTimeout(writeTutorialText1, speed);
+            setTimeout(writeTutorialText, speed);
         }
     }
 
-    writeTutorialText2 = () => {
-        if (i < tutorialText2.length) {
-            feedbackZone.innerHTML += tutorialText2.charAt(i);
-            i++;
-            setTimeout(writeTutorialText2, speed);
-        }
-    }
-    writeTutorialText1();
+    writeTutorialText();
+
     setTimeout(() => {
         feedbackZone.innerHTML = "";
         i = 0;
-        writeTutorialText2();
+        text = tutorialTexts[1];
+        writeTutorialText();
         document.getElementById('start-or-listen-button').appendChild(createStartButton());
     }, 20000);
-
-}*/
+}

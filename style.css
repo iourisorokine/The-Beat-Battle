@@ -221,7 +221,7 @@ header p {
   color: white;
   background-color: green;
   transition: ease-in;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
   box-shadow: 1px 1px 3px #444;
 }
 
@@ -311,8 +311,7 @@ header p {
   box-shadow: 1px 1px 3px #444;
 }
 
-.opponent-character-pic {
-}
+.opponent-character-pic {}
 
 .opponent-character img {
   width: 100%;
