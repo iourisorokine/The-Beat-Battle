@@ -2,11 +2,13 @@
 
 The Beat Battle is a game built as the first project in the frames of the Ironhack Full Stack Web Development bootcamp
 
-## The Game Rules
+## The Rules
 
 The game is played using the mouse. On the left side of the screen, the player has a pad that contains 4 rows of 6 different sounds. Rows represent time signatures ("bars"), and the player can switch the sounds on and off to play or mute them.
 A battle takes place where, on each round, the player hears a beat and then needs to reproduce it in a limited time. 
 Once the time has ellapsed or if the player did the right pattern, the game moves to the next round.
+
+[Screenshot of the game](https://https://github.com/iourisorokine/The-Beat-Battle/screenshots/screenshot1.jpg)
 
 ## Inspirations
 
