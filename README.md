@@ -8,7 +8,7 @@ The game is played using the mouse. On the left side of the screen, the player h
 A battle takes place where, on each round, the player hears a beat and then needs to reproduce it in a limited time. 
 Once the time has ellapsed or if the player did the right pattern, the game moves to the next round.
 
-![Screenshot of the game](https://https://github.com/iourisorokine/The-Beat-Battle/screenshots/screenshot1.jpg)
+![Screenshot of the game](https://https://github.com/iourisorokine/The-Beat-Battle/screenshots/screenshot2.png)
 
 ## Inspirations
 
