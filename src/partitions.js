@@ -38,7 +38,7 @@ const easyPartitions = [{
     {
         name: '"Rock You!"',
         tempo: 60,
-        time: 50,
+        time: 45,
         difficulty: 4,
         notes: [
             [true, false, false, false, false, false],
@@ -103,6 +103,7 @@ const hardPartitions = [{
         name: '"Random Stuff"',
         tempo: 92,
         difficulty: 7,
+        time: 90,
         notes: [
             [true, false, true, false, true, false],
             [false, true, false, true, false, true],
