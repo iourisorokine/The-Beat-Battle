@@ -55,7 +55,6 @@ playAgain = (difficulty) => {
     document.getElementById('end-game-board').style.display = 'none';
     soundsAmbiance[2].pause();
     clearFeedbackZone();
-    writeTutorialText2();
     partitionsToPickFrom = (difficulty === 'easy') ? easyPartitions : hardPartitions;
     roundNb = 0;
     playerScore = 0;
